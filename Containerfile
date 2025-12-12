@@ -5,6 +5,7 @@ RUN    dnf -y --setopt=tsflags=nodocs --setopt=install_weak_deps=False upgrade \
             selenium \
             selenium-manager \
             firefox \
+            python-unversioned-command \
     && dnf clean all \
     && useradd -m batedor
 

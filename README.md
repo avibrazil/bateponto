@@ -40,5 +40,5 @@ e inteligentemente saber os dias que não deve bater ponto, como feriados.
 
 Outra melhoria ainda seria notificar o usuário pelo Telegram, avisando sobre
 falhas, status semanal, próximos feriados etc. Da mesma forma como
-[já faço no MercadoBitcoinBalance](https://github.com/avibrazil/MercadoBitcoinBalance/blob/cccf15d4907b8dab6584370a06470341345e8891/src/__main__.py#L17)
+[já faço no MercadoBitcoinBalance](https://github.com/avibrazil/MercadoBitcoinBalance/blob/cccf15d4907b8dab6584370a06470341345e8891/src/__main__.py#L17).
 
