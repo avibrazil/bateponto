@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 
+import time
+import os
+
 # Selenium Manager é necessário para baixar automaticamente o driver para
 # Firefox. No caso de Chromium, ele não é necessário porque o Fedora já
 # disponibiliza o pacote chromedriver, sempre compatível com o Chromium da
 # distribuição. Só que o Chromium apresentou problemas e parei de usá-lo.
-import os
 os.environ["SE_MANAGER_PATH"] = "/usr/bin/selenium-manager"
 
 import selenium.webdriver
@@ -35,6 +37,7 @@ def get_browser_chrome():
     return driver
 
 
+
 def get_browser_firefox():
     options = selenium.webdriver.firefox.options.Options()
 
@@ -52,15 +55,19 @@ def get_browser_firefox():
     return driver
 
 
+
 def bate_ponto(usuario,senha):
     driver=get_browser_firefox()
 
     # Open the website
     driver.get("https://app.tradingworks.net/")
 
+    # Quanto tempo esperar pelos elementos desejados da página.
+    # Se os botões e campos desejados não aparecerem nesse período de tempo,
+    # os métodos find_element() a seguir vão falhar e gerar uma excessão.
     driver.implicitly_wait(10)
 
-    # --- Login no site ---
+    # Preenche os campos de usuáro e senha para se logar
     username = driver.find_element(selenium.webdriver.common.by.By.ID, "Body_Body_txtUserName")
     password = driver.find_element(selenium.webdriver.common.by.By.ID, "Body_Body_txtPassword")
     username.send_keys(usuario)
@@ -69,7 +76,11 @@ def bate_ponto(usuario,senha):
     # Press ENTER to login
     selenium.webdriver.common.action_chains.ActionChains(driver).send_keys(selenium.webdriver.common.keys.Keys.ENTER).perform()
 
-    # Aperta o link de bater ponto
+    #...
+    # Neste estágio a página para bater ponto é carregada
+    #...
+
+    # Simplesmente aperta o link de bater ponto
     ponto = driver.find_element(selenium.webdriver.common.by.By.ID, "btnAttendance")
     ponto.click()
 
